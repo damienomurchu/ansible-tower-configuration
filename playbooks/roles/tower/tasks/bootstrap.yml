@@ -16,7 +16,7 @@
     body_format: json
     body: '{{ tower_license }}'
     validate_certs: '{{ tower_verify_ssl }}'
-  when: tower_license != ''
+  when: (tower_license is defined) and (tower_license != '')
 
 - name: 'Create the {{ tower_organization }} organisation'
   tower_organization:
